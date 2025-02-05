@@ -7,7 +7,7 @@ WORKDIR /app
 RUN apt-get update && apt-get install -y curl && rm -rf /var/lib/apt/lists/*
 
 # Use build arguments for flexibility (ensure JAR path is correct)
-ARG JAR_FILE=target/MyPizza-0.0.1-SNAPSHOT.jar
+ARG JAR_FILE=target/*.jar
 
 # Copy the JAR file into the container
 COPY ${JAR_FILE} app.jar
