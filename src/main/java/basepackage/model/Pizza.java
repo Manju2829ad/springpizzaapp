@@ -51,7 +51,12 @@ public class Pizza {
                '}';
     }
     
-    
+    public String getImage() {
+        if (image != null) {
+            return "/images/" + image;
+        }
+        return null;
+    }
     
     
     
