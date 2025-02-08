@@ -5,6 +5,7 @@ import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -34,8 +35,9 @@ public class Pizza {
     private Boolean isVeg;
 
     @JsonManagedReference(value = "toppings-pizza")  // Starts serialization for Toppings associated with Pizza
-    @OneToMany(mappedBy = "pizza", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "pizza", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<Topping> toppings;
+
 
     @JsonManagedReference(value = "prices-pizza")  // Starts serialization for Prices associated with Pizza
     @OneToMany(mappedBy = "pizza", cascade = CascadeType.ALL)
@@ -51,6 +53,7 @@ public class Pizza {
                '}';
     }
     
+   
     public String getImage() {
         if (image != null) {
             return "/images/" + image;

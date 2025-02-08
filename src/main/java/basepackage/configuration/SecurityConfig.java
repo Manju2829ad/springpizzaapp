@@ -17,6 +17,7 @@ import basepackage.util.JwtTokenUtil;
 import java.util.Collection;
 
 @Configuration
+
 public class SecurityConfig {
 
     private final JwtTokenUtil jwtTokenUtil;
